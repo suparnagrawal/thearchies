@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Archies Poster Catalogue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #ffb347;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ff5e00;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #ff9500, #ff5e00);
+            color: white;
+            padding: 35px 0;
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 60px; /* Adjust for navbar */
+        }
+
+        /* Section Styling */
+        .section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding-top: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffb347;
+            text-transform: uppercase;
+            border-bottom: 3px solid #ff5e00;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Gallery Styling */
+        .gallery-container {
+            height: 58vh;
+            overflow-y: auto;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+
+        /* Poster Styling */
+        .poster {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .poster:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 20px rgba(255, 94, 0, 0.6);
+        }
+
+        .poster img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .poster:hover img {
+            opacity: 0.8;
+        }
+
+        .filename {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .poster:hover .filename {
+            opacity: 1;
+        }
+
+        /* Image Viewer */
+        .image-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .image-viewer img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 150, 0, 0.4);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .close-btn:hover {
+            color: #ff9500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#aesthetic">Aesthetic</a>
+        <a href="#anime">Anime</a>
+        <a href="#cars">Cars</a>
+        <a href="#devotional">Devotional</a>
+        <a href="#motivational">Motivational</a>
+        <a href="#movies-n-series">Movies And Series</a>
+        <a href="#singers">Singers</a>
+        <a href="#sports">Sports</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header">The Archies Poster Catalogue</div>
+
+
+    
+
+    <div class="section" id="anime">
+        <div class="section-title">Anime Collection</div>
+        <div class="gallery-container">
+            <div class="gallery" id="anime-gallery"></div>
+        </div>
+    </div>
+
+
+    <!-- Cars Section -->
+    <div class="section" id="cars"> 
+        <div class="section-title">Cars Collection</div> 
+        <div class="gallery-container">
+            <div class="gallery" id="cars-gallery"></div> 
+        </div>
+    </div>
+
+    <!-- Devotional Section -->
+    <div class="section" id="devotional"> 
+        <div class="section-title">Devotional Collection</div> 
+        <div class="gallery-container">
+            <div class="gallery" id="devotional-gallery"></div> 
+        </div>
+    </div>
+
+    
+    <div class="section" id="aesthetic">
+        <div class="section-title">Aesthetic Collection</div>
+        <div class="gallery-container">
+            <div class="gallery" id="aesthetic-gallery"></div>
+        </div>
+    </div>
+    
+    <div class="section" id="motivational"> 
+        <div class="section-title">Motivational Collection</div> 
+        <div class="gallery-container">
+            <div class="gallery" id="motivational-gallery"></div> 
+        </div>
+    </div>
+
+    <div class="section" id="movies"> 
+        <div class="section-title">Movies And Web Series Collection</div> 
+        <div class="gallery-container">
+            <div class="gallery" id="movies-gallery"></div> 
+        </div>
+    </div>
+    
+    <div class="section" id="singers"> 
+        <div class="section-title">Singers Collection</div> 
+        <div class="gallery-container">
+            <div class="gallery" id="singers-gallery"></div> 
+        </div>
+    </div>
+    
+    <div class="section" id="sports"> 
+        <div class="section-title">Sports Collection</div> 
+        <div class="gallery-container">
+            <div class="gallery" id="sports-gallery"></div> 
+        </div>
+    </div>
+        
+
+    <!-- Image Viewer -->
+    <div class="image-viewer" id="image-viewer">
+        <span class="close-btn" onclick="closeViewer()">&times;</span>
+        <img id="viewer-img" src="" alt="Full-Size Poster">
+    </div>
+
+    <script>
+        const imageFormats = ['png', 'jpg', 'jpeg'];
+
+        function checkImageExists(src, callback) {
+            const img = new Image();
+            img.onload = () => callback(true, src);
+            img.onerror = () => callback(false, src);
+            img.src = src;
+        }
+
+        function loadImage(sectionId, start, end) {
+            const gallery = document.getElementById(sectionId);
+            for (let i = start; i <= end; i++) {
+                (function(imageNum) {
+                    for (let format of imageFormats) {
+                        let imagePath = `${imageNum}.${format}`;
+                        checkImageExists(imagePath, (exists, src) => {
+                            if (exists) {
+                                gallery.innerHTML += `
+                                    <div class="poster" onclick="openViewer('${src}')">
+                                        <img src="${src}" alt="Poster ${imageNum}">
+                                        <div class="filename">Poster #${imageNum}</div>
+                                    </div>
+                                `;
+                            }
+                        });
+                    }
+                })(i);
+            }
+        }
+
+        function openViewer(imageSrc) {
+            document.getElementById("image-viewer").style.display = "flex";
+            document.getElementById("viewer-img").src = imageSrc;
+        }
+
+        function closeViewer() {
+            document.getElementById("image-viewer").style.display = "none";
+        }
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeViewer();
+        });
+
+        loadImage("aesthetic-gallery", 1, 6);
+        loadImage("anime-gallery", 7, 63);
+        loadImage("cars-gallery", 64, 89);
+        loadImage("devotional-gallery", 90, 107);
+        loadImage("motivational-gallery", 108, 116);
+        loadImage("movies-gallery", 117, 145);
+        loadImage("singers-gallery", 146, 155);
+        loadImage("sports-gallery", 156, 174);
+
+    </script>
+
+</body>
+</html>
